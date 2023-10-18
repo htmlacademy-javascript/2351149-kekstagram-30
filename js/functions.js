@@ -1,6 +1,5 @@
-function checkString(stringChars, lengthMax) {
-  return stringChars.length <= lengthMax;
-}
+const checkString = (stringChars, lengthMax) =>
+  stringChars.length <= lengthMax;
 
 checkString('проверяемая строка', 20);
 checkString('проверяемая строка', 18);
