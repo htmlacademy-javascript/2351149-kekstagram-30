@@ -1,3 +1,3 @@
-import {appendPictures} from './miniatures.js';
+import {appendPictures} from './gallery.js';
 
 appendPictures();
