@@ -1,4 +1,3 @@
-import {getPictures} from './data.js';
-import './miniatures.js';
+import { appendPictures } from './miniatures.js';
 
-getPictures();
+appendPictures();
