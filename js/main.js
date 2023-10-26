@@ -1,3 +1,3 @@
-import {getPictures} from './data.js';
+import {appendPictures} from './gallery.js';
 
-getPictures();
+appendPictures();
