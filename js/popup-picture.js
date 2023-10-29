@@ -1,13 +1,38 @@
+import {isEscapeKey} from './util.js';
+
 const containerPictures = document.querySelector('.pictures');
 const bigPicture = document.querySelector('.big-picture');
-const thumbnails = document.querySelectorAll('.picture');
+const cancelBigPicture = document.querySelector('.big-picture__cancel');
+// const thumbnails = document.querySelectorAll('.picture');
 
-containerPictures.addEventListener('click', (e) => {
-  const targetItem = e.target;
-  if (targetItem.closest(thumbnails)) {
-    bigPicture.classList.remove('hidden');
+const onDocumentKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
+    closeBigPicture();
   }
-});
+};
+
+function openBigPicture () {
+  bigPicture.classList.remove('hidden');
+  document.addEventListener('keydown', onDocumentKeydown);
+}
+
+function closeBigPicture () {
+  bigPicture.classList.add('hidden');
+  document.removeEventListener('keydown', onDocumentKeydown);
+}
+
+const onContainerPicture = (evt) => {
+  if (evt.target.closest('.picture')) {
+    openBigPicture();
+  }
+};
+
+containerPictures.addEventListener('click', onContainerPicture);
+cancelBigPicture.addEventListener('click', closeBigPicture);
+
+// const  = () => {
+
+// };
 
 // const addThumbnailClickHandler = (thumbnail, photo) => {
 //   thumbnail.addEventListener('click', () => {
