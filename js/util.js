@@ -22,4 +22,11 @@ const isTargetClick = (evt, selector) => evt.target.closest(selector);
 const generateCommentId = createIdGenerator();
 const generatePhotoId = createIdGenerator();
 
-export {getRandomInteger, getRandomArrayElement, generateCommentId, generatePhotoId, isKeydown, isTargetClick};
+export {
+  getRandomInteger,
+  getRandomArrayElement,
+  generateCommentId,
+  generatePhotoId,
+  isKeydown,
+  isTargetClick
+};
