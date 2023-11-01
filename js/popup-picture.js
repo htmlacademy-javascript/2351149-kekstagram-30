@@ -4,13 +4,21 @@ const containerPictures = document.querySelector('.pictures');
 // const templateComment = document.querySelector('#comment').content.querySelector('.social__comment');
 const modal = document.querySelector('.big-picture');
 const modalCloseButton = modal.querySelector('.big-picture__cancel');
-const thumbnails = modal.querySelectorAll('.picture__img');
-const bigPicture = modal.querySelectorAll('.big-picture__img img');
-// const likesCount = modal.querySelector('.likes-count');
+const thumbnails = document.querySelectorAll('.picture');
 // const commentShownCount = modal.querySelector('.social__comment-shown-count');
 // const commentTotalCount = modal.querySelector('.social__comment-total-count');
 // const CommentCount = modal.querySelector('.social__comment-count');
 // const commentsLoader = modal.querySelector('.comments-loader');
+
+// const getCommetnts = ({ avatar, message, name }) => {
+//   const clonedComment = templateComment.cloneNode(true);
+
+//   clonedComment.querySelector('.social__picture').src = avatar;
+//   clonedComment.querySelector('.social__picture').alt = name;
+//   clonedComment.querySelector('.social__text').textContent = message;
+
+//   return clonedComment;
+// };
 
 const onCancel = (evt) => {
   if (isKeydown(evt, 'Escape')) {
@@ -20,30 +28,31 @@ const onCancel = (evt) => {
 };
 
 function openModal() {
+  // function openModal(data)
+  // modal.querySelector('.big-picture__img img').src = data.url;
+  // modal.querySelector('.likes-count').textContent = data.likes;
+  // modal.querySelector('.social__caption').textContent = data.description;
+
   modal.classList.remove('hidden');
+  document.body.classList.add('modal-open');
   document.addEventListener('keydown', onCancel);
   modalCloseButton.addEventListener('click', closeModal);
 }
 
 function closeModal() {
   modal.classList.add('hidden');
+  document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onCancel);
   modalCloseButton.removeEventListener('click', closeModal);
 }
 
-const onContainerPictures = (evt) => {
-  if (isTargetClick(evt, '.picture')) {
-    openModal();
-  }
-};
-
-containerPictures.addEventListener('click', onContainerPictures);
-
-const addThumbnailClickHandler = (thumbnail) => {
+const addThumbnailClickHandler = (pictures) => {
   containerPictures.addEventListener('click', (evt) => {
     if (isTargetClick(evt, '.picture')) {
       evt.preventDefault();
-      bigPicture.src = thumbnail.url;
+      // const data = pictures;
+      // openModal(data);
+      openModal();
     }
   });
 };
@@ -52,4 +61,4 @@ for (let i = 0; i < thumbnails.length; i++) {
   addThumbnailClickHandler(thumbnails[i]);
 }
 
-export {};
+export {addThumbnailClickHandler};
