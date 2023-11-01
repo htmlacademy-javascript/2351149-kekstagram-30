@@ -7,8 +7,8 @@ const modalCloseButton = modal.querySelector('.big-picture__cancel');
 const thumbnails = document.querySelectorAll('.picture');
 // const commentShownCount = modal.querySelector('.social__comment-shown-count');
 // const commentTotalCount = modal.querySelector('.social__comment-total-count');
-// const CommentCount = modal.querySelector('.social__comment-count');
-// const commentsLoader = modal.querySelector('.comments-loader');
+const commentCount = modal.querySelector('.social__comment-count');
+const commentsLoader = modal.querySelector('.comments-loader');
 
 // const getCommetnts = ({ avatar, message, name }) => {
 //   const clonedComment = templateComment.cloneNode(true);
@@ -37,6 +37,8 @@ function openModal() {
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onCancel);
   modalCloseButton.addEventListener('click', closeModal);
+  commentCount.classList.add('hidden');
+  commentsLoader.classList.add('hidden');
 }
 
 function closeModal() {
@@ -44,6 +46,8 @@ function closeModal() {
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onCancel);
   modalCloseButton.removeEventListener('click', closeModal);
+  commentCount.classList.remove('hidden');
+  commentsLoader.classList.remove('hidden');
 }
 
 const addThumbnailClickHandler = (pictures) => {
