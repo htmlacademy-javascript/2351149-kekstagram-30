@@ -1,7 +1,8 @@
-import {appendPictures} from './gallery.js';
-import {addThumbnailClickHandler} from './popup-picture.js';
+import { getPictures } from './data.js';
+import { appendPictures } from './gallery.js';
+import { addThumbnailClickHandler } from './popup-picture.js';
 
-const pictures = appendPictures();
+const pictures = getPictures();
 
-appendPictures();
+appendPictures(pictures);
 addThumbnailClickHandler(pictures);
