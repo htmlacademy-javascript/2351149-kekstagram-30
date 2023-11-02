@@ -10,15 +10,25 @@ const getRandomArrayElement = (items) =>
 
 const createIdGenerator = () => {
   let lastGeneratedId = 0;
-
   return () => {
     lastGeneratedId += 1;
     return lastGeneratedId;
   };
 };
 
+const isKeydown = (evt, keydown) => evt.key === keydown;
+const isTargetClick = (evt, selector) => evt.target.closest(selector);
+
 const generateCommentId = createIdGenerator();
-
 const generatePhotoId = createIdGenerator();
+const generateDataId = createIdGenerator();
 
-export {getRandomInteger, getRandomArrayElement, generateCommentId, generatePhotoId};
+export {
+  getRandomInteger,
+  getRandomArrayElement,
+  generateCommentId,
+  generatePhotoId,
+  generateDataId,
+  isKeydown,
+  isTargetClick
+};
