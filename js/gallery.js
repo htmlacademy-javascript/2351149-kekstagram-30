@@ -11,7 +11,7 @@ const appendPictures = (array) => {
     clonedTemplate.querySelector('.picture__img').alt = description;
     clonedTemplate.querySelector('.picture__comments').textContent = comments.length;
     clonedTemplate.querySelector('.picture__likes').textContent = likes;
-    clonedTemplate.querySelector('.picture__img').dataset.pictureId = generateDataId();
+    clonedTemplate.dataset.pictureId = generateDataId();
     fragmentPictures.appendChild(clonedTemplate);
   });
   containerPictures.append(fragmentPictures);
