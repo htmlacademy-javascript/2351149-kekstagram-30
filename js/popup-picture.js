@@ -28,7 +28,6 @@ const onCancel = (evt) => {
 };
 
 function openModal() {
-  // function openModal(data)
   // modal.querySelector('.big-picture__img img').src = data.url;
   // modal.querySelector('.likes-count').textContent = data.likes;
   // modal.querySelector('.social__caption').textContent = data.description;
@@ -50,19 +49,28 @@ function closeModal() {
   commentsLoader.classList.remove('hidden');
 }
 
+// function isId(array) {
+//   return array.name === "id";
+// }
+
 const addThumbnailClickHandler = (pictures) => {
+  // console.log(pictures);
   containerPictures.addEventListener('click', (evt) => {
     if (isTargetClick(evt, '.picture')) {
       evt.preventDefault();
-      // const data = pictures;
-      // openModal(data);
+      // const x = pictures.find(({ id }) => id === '');
+      // const pictureObject = pictures.filter((item) => item.id === pictureID);
       openModal();
     }
+
   });
 };
 
 for (let i = 0; i < thumbnails.length; i++) {
   addThumbnailClickHandler(thumbnails[i]);
 }
+
+const thumbnail = document.querySelector('.picture__img');
+console.log(thumbnail);
 
 export {addThumbnailClickHandler};

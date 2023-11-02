@@ -21,12 +21,14 @@ const isTargetClick = (evt, selector) => evt.target.closest(selector);
 
 const generateCommentId = createIdGenerator();
 const generatePhotoId = createIdGenerator();
+const generateDataId = createIdGenerator();
 
 export {
   getRandomInteger,
   getRandomArrayElement,
   generateCommentId,
   generatePhotoId,
+  generateDataId,
   isKeydown,
   isTargetClick
 };
