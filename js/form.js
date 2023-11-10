@@ -1,4 +1,5 @@
 import { isKeydown } from './util.js';
+import { resetScale } from './scale.js';
 import {
   init as initEffect,
   reset as resetEffect
@@ -34,6 +35,8 @@ const showModal = () => {
 
 const hideModal = () => {
   form.reset();
+  resetScale();
+  resetEffect();
   pristine.reset();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
