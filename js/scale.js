@@ -4,10 +4,10 @@ const MAX_SCALE = 100;
 const DEFAULT_SCALE = 100;
 
 const modalElement = document.querySelector('.img-upload');
-const smallerButtonElement = modalElement.querySelector('');
-const biggerButtonElement = modalElement.querySelector('');
-const scaleInputElement = modalElement.querySelector('');
-const imageElement = modalElement.querySelector('');
+const smallerButtonElement = modalElement.querySelector('.scale__control--smaller');
+const biggerButtonElement = modalElement.querySelector('.scale__control--bigger');
+const scaleInputElement = modalElement.querySelector('.scale__control--value');
+const imageElement = modalElement.querySelector('.img-upload__preview img');
 
 const scaleImage = (value) => {
   imageElement.style.transform = `scale(${value / 100})`;
