@@ -8,6 +8,10 @@ const Effect = {
 };
 
 const effectToFilter = {
+  [Effect.DEFAULT]: {
+    style: 'none',
+    unit: '',
+  },
   [Effect.CHROME]: {
     style: 'grayscale',
     unit: '',
