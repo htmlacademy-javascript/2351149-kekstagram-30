@@ -1,12 +1,6 @@
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
+const REMOVE_MESSAGE_TIMEOUT = 5000;
 
-const getRandomArrayElement = (items) =>
-  items[getRandomInteger(0, items.length - 1)];
+const templateErrorMessage = document.querySelector('#data-error').content.querySelector('.data-error');
 
 const createIdGenerator = () => {
   let lastGeneratedId = 0;
@@ -19,16 +13,15 @@ const createIdGenerator = () => {
 const isKeydown = (evt, keydown) => evt.key === keydown;
 const isTargetClick = (evt, selector) => evt.target.closest(selector);
 
-const generateCommentId = createIdGenerator();
-const generatePhotoId = createIdGenerator();
 const generateDataId = createIdGenerator();
 
-export {
-  getRandomInteger,
-  getRandomArrayElement,
-  generateCommentId,
-  generatePhotoId,
-  generateDataId,
-  isKeydown,
-  isTargetClick
+const showErrorMessage = () => {
+  const errorElement = templateErrorMessage.cloneNode(true);
+  document.body.append(errorElement);
+
+  setTimeout(() => {
+    errorElement.remove();
+  }, REMOVE_MESSAGE_TIMEOUT);
 };
+
+export { generateDataId, isKeydown, isTargetClick, showErrorMessage };

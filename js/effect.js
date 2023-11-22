@@ -139,7 +139,7 @@ const setEffect = (effect) => {
   setImagesStyle();
 };
 
-const reset = () => {
+const resetEffect = () => {
   setEffect(Effect.DEFAULT);
 };
 
@@ -147,9 +147,9 @@ const onEffectChange = (evt) => {
   setEffect(evt.target.value);
 };
 
-const init = () => {
+const initEffect = () => {
   createSlider(effectToSliderOptions[chosenEffect]);
   effectsElement.addEventListener('change', onEffectChange);
 };
 
-export { init, reset };
+export { initEffect, resetEffect };
