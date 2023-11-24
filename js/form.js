@@ -6,6 +6,7 @@ import { showSuccessMessage, showErrorMessage } from './message.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
+const FILE_TYPES = ['.img', '.png', '.jpg'];
 const ErrorText = {
   INVALID_COUNT: `Максимум ${MAX_HASHTAG_COUNT} хэштегов`,
   NOT_UNIQUE: 'Хэштеги должны быть уникальными',
@@ -25,6 +26,8 @@ const fileField = form.querySelector('.img-upload__input');
 const hashtagField = form.querySelector('.text__hashtags');
 const commentField = form.querySelector('.text__description');
 const submitButton = form.querySelector('.img-upload__submit');
+const thumbnails = form.querySelectorAll('.effects__preview');
+const preview = form.querySelector('.img-upload__preview img');
 
 const toggleSubmitButton = (isDisabled) => {
   if (isDisabled) {
@@ -87,10 +90,6 @@ const onCancelButtonClick = () => {
   hideModal();
 };
 
-const onFileInputChange = () => {
-  showModal();
-};
-
 const sendForm = async (formElement) => {
   if (!pristine.validate()) {
     return;
@@ -137,7 +136,20 @@ pristine.addValidator(
   true
 );
 
-fileField.addEventListener('change', onFileInputChange);
+const onUploadImage = () => {
+  const file = fileField.files[0];
+  const fileModified = file.name.toLowerCase();
+  const matches = FILE_TYPES.some((item) => fileModified.endsWith(item));
+  if (matches) {
+    preview.src = URL.createObjectURL(file);
+  }
+  thumbnails.forEach((item) => {
+    item.style.backgroundImage = `url("${URL.createObjectURL(file)}")`;
+  });
+  showModal();
+};
+
+fileField.addEventListener('change', onUploadImage);
 cancelButton.addEventListener('click', onCancelButtonClick);
 form.addEventListener('submit', onFormSubmit);
 
