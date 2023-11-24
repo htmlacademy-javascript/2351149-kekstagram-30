@@ -1,5 +1,4 @@
-import { isKeydown } from './util.js';
-import { isTargetClick } from './util.js';
+import { isKeydown, isTargetClick } from './util.js';
 
 const successMessageElement = document.querySelector('#success').content.querySelector('.success');
 const errorMessageElement = document.querySelector('#error').content.querySelector('.error');
