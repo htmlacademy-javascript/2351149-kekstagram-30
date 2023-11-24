@@ -1,4 +1,4 @@
-import { renderPicture } from './popup-picture.js';
+import { appendPictures } from './gallery.js';
 import { debounce } from './util.js';
 
 const filterElement = document.querySelector('.img-filters');
@@ -40,7 +40,7 @@ const repaint = (evt, filter, data) => {
     const filteredData = filterHandlers[filter](data);
     const pictures = document.querySelectorAll('.picture');
     pictures.forEach((item) => item.remove());
-    renderPicture(filteredData);
+    appendPictures(filteredData);
     const currentActiveEl = filterForm.querySelector('.img-filters__button--active');
     currentActiveEl.classList.remove('img-filters__button--active');
     evt.target.classList.add('img-filters__button--active');
