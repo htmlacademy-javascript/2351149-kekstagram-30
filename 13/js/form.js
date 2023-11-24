@@ -32,8 +32,10 @@ const preview = form.querySelector('.img-upload__preview img');
 const toggleSubmitButton = (isDisabled) => {
   if (isDisabled) {
     submitButton.textContent = submitButtonCaption.SUBMITTING;
+    submitButton.disabled = true;
   } else {
     submitButton.textContent = submitButtonCaption.IDLE;
+    submitButton.disabled = false;
   }
 };
 
