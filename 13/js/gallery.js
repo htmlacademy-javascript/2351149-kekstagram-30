@@ -1,3 +1,5 @@
+import { renderPicture } from './popup-picture.js';
+
 const containerPictures = document.querySelector('.pictures');
 const templatePictures = document.querySelector('#picture').content.querySelector('.picture');
 const fragmentPictures = document.createDocumentFragment();
@@ -13,6 +15,7 @@ const appendPictures = (array) => {
     fragmentPictures.appendChild(clonedTemplate);
   });
   containerPictures.append(fragmentPictures);
+  renderPicture(array);
 };
 
 export { appendPictures };
