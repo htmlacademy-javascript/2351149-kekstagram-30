@@ -1,5 +1,4 @@
 import { isKeydown, isTargetClick } from './util.js';
-import { appendPictures } from './gallery.js';
 
 const containerPictures = document.querySelector('.pictures');
 const commentElement = document.querySelector('#comment').content.querySelector('.social__comment');
@@ -86,9 +85,9 @@ const renderPicture = (pictures) => {
     evt.preventDefault();
     const pictureId = +thumbnail.dataset.pictureId;
     const pictureData = pictures.find(({ id }) => id === pictureId);
+    commentsCountShown = 0;
     showPicture(pictureData);
   });
-  appendPictures(pictures);
 };
 
 document.addEventListener('keydown', onCancel);

@@ -1,4 +1,4 @@
-import { renderPicture } from './popup-picture.js';
+import { appendPictures } from './gallery.js';
 import { debounce } from './util.js';
 
 const filterElement = document.querySelector('.img-filters');
@@ -40,27 +40,31 @@ const repaint = (evt, filter, data) => {
     const filteredData = filterHandlers[filter](data);
     const pictures = document.querySelectorAll('.picture');
     pictures.forEach((item) => item.remove());
-    renderPicture(filteredData);
-    const currentActiveEl = filterForm.querySelector('.img-filters__button--active');
-    currentActiveEl.classList.remove('img-filters__button--active');
-    evt.target.classList.add('img-filters__button--active');
+    appendPictures(filteredData);
     currentFilter = filter;
   }
 };
 
 const debouncedRepaint = debounce(repaint);
 
-const onFilterButton = (filterButton, filter, data) => {
+const buttonFilterActive = (evt, filter, data) => {
+  const currentActiveElement = filterForm.querySelector('.img-filters__button--active');
+  currentActiveElement.classList.remove('img-filters__button--active');
+  evt.target.classList.add('img-filters__button--active');
+  debouncedRepaint(evt, filter, data);
+};
+
+const filterButtonHandler = (filterButton, filter, data) => {
   filterButton.addEventListener('click', (evt) => {
-    debouncedRepaint(evt, filter, data);
+    buttonFilterActive(evt, filter, data);
   });
 };
 
 const initFilter = (data) => {
   filterElement.classList.remove('img-filters--inactive');
-  onFilterButton(defaultButton, FilterEnum.DEFAULT, data);
-  onFilterButton(randomButton, FilterEnum.RANDOM, data);
-  onFilterButton(discussedButton, FilterEnum.DISCUSSED, data);
+  filterButtonHandler(defaultButton, FilterEnum.DEFAULT, data);
+  filterButtonHandler(randomButton, FilterEnum.RANDOM, data);
+  filterButtonHandler(discussedButton, FilterEnum.DISCUSSED, data);
 };
 
 export { initFilter };
