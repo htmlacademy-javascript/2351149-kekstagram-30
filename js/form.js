@@ -59,7 +59,7 @@ const hideModal = () => {
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
-  preview.src = URL.revokeObjectURL();
+  preview.src = '';
 };
 
 const isTextFieldFocused = () =>
@@ -68,7 +68,8 @@ const isTextFieldFocused = () =>
 
 const normalizeTags = (tagString) => tagString
   .trim()
-  .split()
+  .toLowerCase()
+  .split(' ')
   .filter((tag) => Boolean(tag.length));
 
 const hasValidTags = (value) => normalizeTags(value).every((tag) => VALID_SYMBOLS.test(tag));
