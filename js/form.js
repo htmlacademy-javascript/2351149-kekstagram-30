@@ -59,7 +59,7 @@ const hideModal = () => {
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
-  preview.src = URL.revokeObjectURL();
+  preview.src = '';
 };
 
 const isTextFieldFocused = () =>
