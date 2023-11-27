@@ -20,15 +20,15 @@ const getRandomIndex = (min, max) => Math.floor(Math.random() * (max - min));
 const filterHandlers = {
   [FilterEnum.DEFAULT]: (data) => data,
   [FilterEnum.RANDOM]: (data) => {
-    const randomIndexList = [];
+    const randomIndexes = [];
     const max = Math.min(MAX_RANDOM_FILTER, data.length);
-    while(randomIndexList.length < max) {
+    while(randomIndexes.length < max) {
       const index = getRandomIndex(0, data.length);
-      if(!randomIndexList.includes(index)) {
-        randomIndexList.push(index);
+      if(!randomIndexes.includes(index)) {
+        randomIndexes.push(index);
       }
     }
-    return randomIndexList.map((index) => data[index]);
+    return randomIndexes.map((index) => data[index]);
   },
   [FilterEnum.DISCUSSED]: (data) => [...data].sort((item1, item2) => item2.comments.length - item1.comments.length),
 };
